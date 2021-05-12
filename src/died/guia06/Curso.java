@@ -1,5 +1,6 @@
 package died.guia06;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,9 +46,15 @@ public class Curso {
 	 * @param a
 	 * @return
 	 */
-	public Boolean inscribir(Alumno a) {
-		log.registrar(this, "inscribir ",a.toString());
-		return false;
+	public Boolean inscribir(Alumno a) throws IOException  { //capturo la exception
+		try {
+			log.registrar(this, "inscribir ",a.toString());
+			System.out.println("Inscripto correctamente");
+			return true;
+		}catch (IOException e) {
+			System.out.println("Excepcion capturada");
+			throw e;
+		}
 	}
 	
 	
@@ -55,7 +62,7 @@ public class Curso {
 	 * imprime los inscriptos en orden alfabetico
 	 */
 	public void imprimirInscriptos() {
-		log.registrar(this, "imprimir listado",this.inscriptos.size()+ " registros ");
+	//	log.registrar(this, "imprimir listado",this.inscriptos.size()+ " registros ");
 	}
 
 
